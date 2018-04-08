@@ -952,7 +952,9 @@ public class AuthorizationRequest {
         UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_LOGIN_HINT, loginHint);
         UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_PROMPT, prompt);
         UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_STATE, state);
-        UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_SCOPE, scope);
+        for (String s: this.scope.split(" +")){
+            UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_SCOPE, s);
+        }
         UriUtil.appendQueryParameterIfNotNull(uriBuilder, PARAM_RESPONSE_MODE, responseMode);
 
         if (codeVerifier != null) {
